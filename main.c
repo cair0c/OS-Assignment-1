@@ -9,7 +9,6 @@
 void computeFactorial(int n);
 void findPrimesInRange(int start, int end);
 void computeFibonacci(int n);
-void sumOfNumbers(int start, int end);
 void bubbleSort();
 
 int main(void)
@@ -76,7 +75,14 @@ int main(void)
 
 void computeFactorial(int n)
 {
-    printf("%d\n",n);
+    int result = 1;
+
+    for (int i = 1; i < n + 1; i++) {
+        if (i != 1) {
+            result = result * i;
+        }
+    }
+    printf("the factorial of %d is %d", n, result);
 }
 void findPrimesInRange(int n, int i)
 {
