@@ -90,6 +90,18 @@ void findPrimesInRange(int n, int i)
 }
 void computeFibonacci(int n)
 {
+    int a = 0, b = 1, term;
+
+    printf("Fibonacci sequence until %d: ", n);
+    
+    for (int i = 1; i <= n; ++i)
+    {
+        printf("%d ", a);
+        term = a + b;
+        a = b;
+        b = term;
+    }
+    
     printf("%d\n",n);
 }
 void sumOfNumbers(int n, int i)
