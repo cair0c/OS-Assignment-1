@@ -8,8 +8,7 @@
 void computeFactorial(int n);
 void findPrimesInRange(int start, int end);
 void computeFibonacci(int n);
-void sumOfNumbers(int start, int end);
-void bubbleSort(int arr[], int n);
+void bubbleSort(int arr[], int n); 
 
 int main(void)
 {
@@ -87,12 +86,19 @@ void findPrimesInRange(int n, int i)
 }
 void computeFibonacci(int n)
 {
-    printf("%d",n);
+    int a = 0, b = 1, term;
+
+    printf("Fibonacci sequence until %d: ", n);
+    for (int i = 1; i <= n; ++i)
+    {
+        printf("%d ", a);
+        term = a + b;
+        a = b;
+        b = term;
+    }
+    printf("\n");
 }
-void sumOfNumbers(int n, int i)
-{
-    printf("%d",n);
-}
+
 void bubbleSort(int arr[], int n)
 {
     int i, j, temp;
