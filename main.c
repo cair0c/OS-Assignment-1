@@ -104,12 +104,6 @@ void computeFibonacci(int n)
     
     printf("%d\n",n);
 }
-void sumOfNumbers(int n, int i)
-{
-    printf("%d\n",n);
-}
-
-
 void bubbleSort()
 {
     int n = rand() % (500 - 1000); // generate a random number between 500 and 1000
