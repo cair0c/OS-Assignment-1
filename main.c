@@ -102,7 +102,7 @@ void computeFibonacci(int n)
         b = term;
     }
     
-    printf("%d\n",n);
+    printf("\n");
 }
 void bubbleSort()
 {
