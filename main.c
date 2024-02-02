@@ -9,7 +9,6 @@
 void computeFactorial(int n);
 void findPrimesInRange(int start, int end);
 void computeFibonacci(int n);
-void sumOfNumbers(int start, int end);
 void bubbleSort();
 
 int main(void)
