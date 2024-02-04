@@ -1,4 +1,4 @@
-# Camila Castaneda PID 6059028
+// Camila Castaneda PID 6059028
 
 #include <stdio.h>
 #include <stdlib.h>
