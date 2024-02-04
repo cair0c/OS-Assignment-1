@@ -44,19 +44,19 @@ int main(void)
             switch (i)
             {
                 case 0:
-                    printf("Child 1 (PID: %d) is computing the factorial of 5.", getpid());
+                    printf("Child 1 (PID: %d) is computing the factorial of 5.\n", getpid());
                     computeFactorial(5, getpid()); 
                     break;
                 case 1:
-                    printf("Child 2 (PID: %d) is finding prime numbers up to 20.", getpid());
+                    printf("Child 2 (PID: %d) is finding prime numbers up to 20.\n", getpid());
                     findPrimesInRange(20, getpid());
                     break;
                 case 2:
-                    printf("Child 3 (PID: %d) is computing the fibonacci sequence up to 5.", getpid());
+                    printf("Child 3 (PID: %d) is computing the fibonacci sequence up to 5.\n", getpid());
                     computeFibonacci(5, getpid());
                     break;
                 case 3:
-                    printf("Child 4 (PID: %d) is computing the fibonacci sequence up to 5.", getpid());
+                    printf("Child 4 (PID: %d) is computing the fibonacci sequence up to 5.\n", getpid());
                     bubbleSort(getpid());
                     break;
             }
@@ -114,6 +114,8 @@ void findPrimesInRange(int number, int pid)
             printf("%d ", checkPrime);
         }
     }
+
+    printf("\n")
 }
 
 void computeFibonacci(int n, int pid)
