@@ -31,7 +31,7 @@ int main(void)
         exit(EXIT_FAILURE);
     }
 
-    printf("Parent process (PID: %d) is creating %d child processes\n", getpid(), n);
+    printf("Parent process (PID: %d) is creating %d child processes\n \n", getpid(), n);
 
     for (i = 0; i < n; i++)
     {
@@ -49,7 +49,7 @@ int main(void)
             {
                 case 0:
                     printf("Child 1 (PID: %d) is computing the factorial of 5.\n", getpid());
-                    computeFactorial(5, getpid()); 
+                    computeFactorial(5, getpid());
                     break;
                 case 1:
                     printf("Child 2 (PID: %d) is finding prime numbers up to 20.\n", getpid());
@@ -60,7 +60,6 @@ int main(void)
                     computeFibonacci(5, getpid());
                     break;
                 case 3:
-                    printf("Child 4 (PID: %d) is computing the fibonacci sequence up to 5.\n", getpid());
                     bubbleSort(getpid());
                     break;
             }
@@ -104,39 +103,43 @@ bool isPrime(int checkPrime) {
 
 void findPrimesInRange(int number, int pid)
 {
-    printf("Child 2 (PID: %d) completed its task. Result: ", pid);
+    char result[1024] = {0}; // Ensure this buffer is large enough for your needs
+    int offset = 0;
 
-    for (int checkPrime = 0; checkPrime <= number; checkPrime++)
+    offset += sprintf(result + offset, "Child 2 (PID: %d) completed its task. Result: ", pid);
+
+    for (int checkPrime = 2; checkPrime <= number; checkPrime++)
     {
-        if (checkPrime <= 1)
-        {
-            continue;
-        }
-
         if (isPrime(checkPrime))
         {
-            printf("%d ", checkPrime);
+            offset += sprintf(result + offset, "%d ", checkPrime);
         }
     }
 
-    printf("\n")
+    // Print the entire result string
+    printf("%s\n", result);
 }
 
 void computeFibonacci(int n, int pid)
 {
     int a = 0, b = 1, term;
 
-    printf("Fibonacci sequence until %d: ", n);
+    // Ensure this buffer is large enough for your sequence
+    char result[1024] = {0};
+    int offset = 0;
+
+    offset += sprintf(result + offset, "Fibonacci sequence until %d: ", n);
 
     for (int i = 1; i <= n; ++i)
     {
-        printf("%d ", a);
+        offset += sprintf(result + offset, "%d ", a);
         term = a + b;
         a = b;
         b = term;
     }
 
-    printf("\n");
+    // Print the entire result string
+    printf("%s\n", result);
 }
 
 void bubbleSort(int pid)
@@ -151,7 +154,7 @@ void bubbleSort(int pid)
         arr[i] = rand() % 100 + 1;
     }
 
-    printf("Sorting an array of size %d using bubble sort\n", n);
+    printf("Child 4 (PID: %d) is sorting an array of size %d using bubble sort.\n",pid, n);
     int i, j, temp;
     for (i = 0; i < n-1; i++)
     {
@@ -167,9 +170,10 @@ void bubbleSort(int pid)
     }
 
     // Use sprintf to concatenate sorted array into a string
+
     char result[1024] = {0}; // Ensure this buffer is large enough for your array
     int offset = 0;
-    offset += sprintf(result + offset, "Child 3 (PID: %d) completed its task. Result: ", pid);
+    offset += sprintf(result + offset, "Child 4 (PID: %d) completed its task. Result: ", pid);
 
     //using sprintf to make sure entire array is printing on the same line (incase any child classes finish simultaenously)
     for (i = 0; i < n; i++)
