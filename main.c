@@ -11,7 +11,7 @@ void computeFactorial(int n, int pid);
 bool isPrime(int checkPrime);
 void findPrimesInRange(int number, int pid);
 void computeFibonacci(int n, int pid);
-void bubbleSort();
+void bubbleSort(int pid);
 
 int main(void)
 {
