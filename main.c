@@ -84,10 +84,12 @@ void computeFactorial(int n)
     }
     printf("the factorial of %d is %d", n, result);
 }
+
 void findPrimesInRange(int n, int i)
 {
     printf("%d\n",n);
 }
+
 void computeFibonacci(int n)
 {
     int a = 0, b = 1, term;
@@ -104,6 +106,7 @@ void computeFibonacci(int n)
     
     printf("\n");
 }
+
 void bubbleSort()
 {
     int n = rand() % (500 - 1000); // generate a random number between 500 and 1000
