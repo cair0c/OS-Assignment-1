@@ -43,16 +43,16 @@ int main(void)
             switch (i)
             {
                 case 0:
-                    computeFactorial(5, getpid()); // Example task
+                    computeFactorial(5, getpid()); 
                     break;
                 case 1:
-                    findPrimesInRange(1, 10); // Placeholder for actual implementation
+                    findPrimesInRange(1, 10);
                     break;
                 case 2:
-                    computeFibonacci(5); // Placeholder for actual implementation
+                    computeFibonacci(5, getpid());
                     break;
                 case 3:
-                    bubbleSort(getpid()); // Placeholder for actual implementation
+                    bubbleSort(getpid());
                     break;
             }
 
@@ -89,7 +89,7 @@ void findPrimesInRange(int n, int i)
     printf("%d\n",n);
 }
 
-void computeFibonacci(int n)
+void computeFibonacci(int n, int pid)
 {
     int a = 0, b = 1, term;
 
