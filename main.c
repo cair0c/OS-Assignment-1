@@ -4,11 +4,13 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <math.h>
+#include <stdbool.h>
 
 // Function prototypes for tasks
 void computeFactorial(int n, int pid);
-void findPrimesInRange(int start, int end);
-void computeFibonacci(int n);
+bool isPrime(int checkPrime);
+void findPrimesInRange(int number, int pid);
+void computeFibonacci(int n, int pid);
 void bubbleSort();
 
 int main(void)
@@ -46,7 +48,7 @@ int main(void)
                     computeFactorial(5, getpid()); 
                     break;
                 case 1:
-                    findPrimesInRange(1, 10);
+                    findPrimesInRange(20, getpid());
                     break;
                 case 2:
                     computeFibonacci(5, getpid());
@@ -84,9 +86,31 @@ void computeFactorial(int n, int pid)
     printf("Child 1 (PID: %d) completed its task. Result: %d\n", pid, result);
 }
 
-void findPrimesInRange(int n, int i)
+bool isPrime(int checkPrime) {
+    for (int j = 2; j * j <= checkPrime; j++) {
+        if (checkPrime % j == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+void findPrimesInRange(int number, int pid)
 {
-    printf("%d\n",n);
+    printf("Child 2 (PID: %d) completed its task. Result: ", pid);
+
+    for (int checkPrime = 0; checkPrime <= number; checkPrime++)
+    {
+        if (checkPrime <= 1)
+        {
+            continue;
+        }
+
+        if (isPrime(checkPrime))
+        {
+            printf("%d ", checkPrime);
+        }
+    }
 }
 
 void computeFibonacci(int n, int pid)
