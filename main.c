@@ -1,5 +1,3 @@
-// Camila Castaneda PID 6059028
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -54,11 +52,10 @@ int main(void)
                     computeFibonacci(5); // Placeholder for actual implementation
                     break;
                 case 3:
-                    bubbleSort(); // Placeholder for actual implementation
+                    bubbleSort(getpid()); // Placeholder for actual implementation
                     break;
             }
 
-            printf("Child PID %d: Task %d completed\n", getpid(), i + 1);
             exit(EXIT_SUCCESS);
         }
     }
@@ -84,7 +81,7 @@ void computeFactorial(int n, int pid)
             result = result * i;
         }
     }
-    printf("Child 1 (PID: %d) completed its task. Result: %d", pid, result);
+    printf("Child 1 (PID: %d) completed its task. Result: %d\n", pid, result);
 }
 
 void findPrimesInRange(int n, int i)
@@ -97,7 +94,7 @@ void computeFibonacci(int n)
     int a = 0, b = 1, term;
 
     printf("Fibonacci sequence until %d: ", n);
-    
+
     for (int i = 1; i <= n; ++i)
     {
         printf("%d ", a);
@@ -105,19 +102,20 @@ void computeFibonacci(int n)
         a = b;
         b = term;
     }
-    
+
     printf("\n");
 }
 
-void bubbleSort()
+void bubbleSort(int pid)
 {
-    int n = rand() % (500 - 1000); // generate a random number between 500 and 1000
+    int n = rand() % 16 + 5; // Correctly generate a random number between 5 and 20
 
     int arr[n];
 
-    for (int i = 0; i < n-1; i++)
+    // Initialize array with random numbers between 1 and 100
+    for (int i = 0; i < n; i++) // Corrected to fill the entire array
     {
-        arr[i] = rand() % (1 - 500);
+        arr[i] = rand() % 100 + 1;
     }
 
     printf("Sorting an array of size %d using bubble sort\n", n);
@@ -135,6 +133,17 @@ void bubbleSort()
         }
     }
 
-    printf("Array sorting completed.\n");
-}
+    // Use sprintf to concatenate sorted array into a string
+    char result[1024] = {0}; // Ensure this buffer is large enough for your array
+    int offset = 0;
+    offset += sprintf(result + offset, "Child 3 (PID: %d) completed its task. Result: ", pid);
 
+    //using sprintf to make sure entire array is printing on the same line (incase any child classes finish simultaenously)
+    for (i = 0; i < n; i++)
+    {
+        offset += sprintf(result + offset, "%d ", arr[i]);
+    }
+
+    // Print the entire result string
+    printf("%s\n", result);
+}
