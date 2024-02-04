@@ -43,7 +43,7 @@ int main(void)
             switch (i)
             {
                 case 0:
-                    computeFactorial(5, 0); // Example task
+                    computeFactorial(5, getpid()); // Example task
                     break;
                 case 1:
                     findPrimesInRange(1, 10); // Placeholder for actual implementation
@@ -135,3 +135,4 @@ void bubbleSort()
 
     printf("Array sorting completed.\n");
 }
+
