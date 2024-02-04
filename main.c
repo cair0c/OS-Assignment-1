@@ -6,7 +6,7 @@
 #include <math.h>
 
 // Function prototypes for tasks
-void computeFactorial(int n);
+void computeFactorial(int n, int pid);
 void findPrimesInRange(int start, int end);
 void computeFibonacci(int n);
 void bubbleSort();
@@ -43,7 +43,7 @@ int main(void)
             switch (i)
             {
                 case 0:
-                    computeFactorial(5); // Example task
+                    computeFactorial(5, 0); // Example task
                     break;
                 case 1:
                     findPrimesInRange(1, 10); // Placeholder for actual implementation
@@ -73,7 +73,7 @@ int main(void)
     return 0;
 }
 
-void computeFactorial(int n)
+void computeFactorial(int n, int pid)
 {
     int result = 1;
 
@@ -82,7 +82,7 @@ void computeFactorial(int n)
             result = result * i;
         }
     }
-    printf("the factorial of %d is %d", n, result);
+    printf("Child 1 (PID: %d) completed its task. Result: %d", pid, result);
 }
 
 void findPrimesInRange(int n, int i)
